@@ -1,36 +1,37 @@
 .container {
   padding: 0 2rem;
-}
-
-.main {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .headerTextContainer {
+  
+  .main {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    text-align: center;
-
-    .primaryText {
-      font-size: 4rem;
-      text-transform: uppercase;
-    }
-
-    .secondaryText {
+    justify-content: center;
+    align-items: center;
+  
+    .headerTextContainer {
       display: flex;
       flex-direction: column;
-      font-size: 2rem;
-
-      margin-top: 2rem;
-
-      &:last-child {
+      text-align: center;
+  
+      .primaryText {
+        font-size: 4rem;
         text-transform: uppercase;
+      }
+  
+      .secondaryText {
+        display: flex;
+        flex-direction: column;
+        font-size: 2rem;
+  
+        margin-top: 2rem;
+  
+        &:last-child {
+          text-transform: uppercase;
+        }
       }
     }
   }
 }
+
 
 

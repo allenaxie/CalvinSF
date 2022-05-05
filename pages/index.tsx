@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import classes from '../styles/Home.module.scss';
+import {Col, Row} from 'antd';
 
 const Home: NextPage = () => {
   return (
@@ -21,6 +22,25 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section>
+
+        <Row className={classes.aboutRow}>
+          <Col
+            lg={{span:8}}
+          >
+            image
+          </Col>
+          <Col 
+            className={classes.aboutHeading}
+            lg={{span:8}}
+          >
+            <span>About Me</span>
+          </Col>
+          <Col
+            lg={{span:8}}
+          >
+            image
+          </Col>
+        </Row>
       </main>
     </div>
   )
