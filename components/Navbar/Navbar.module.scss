@@ -26,7 +26,99 @@
         }
 
         .activeLink {
-            border-bottom: 1px solid rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        }
+
+        @media screen and (max-width:900px) {
+            display: none;
         }
     }
+
+    .mobileMenuContainer {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.3s ease;
+
+        svg {
+            width: 70%;
+            height: 70%;
+            cursor: pointer;
+        }
+
+        .mobileMenu {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 5;
+
+            padding: 2rem;
+
+            min-width: 250px;
+            height: 100vh;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            flex-direction: column;
+
+            background-color: rgba(242, 242, 242, 0.5);
+            backdrop-filter: grayscale(100%) blur(4px);
+
+            .menuXIcon {
+                width: 35px;
+                height: 35px;
+                cursor: pointer;
+            }
+
+            .mobileLinks {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                list-style: none;
+                width: 100%;
+
+                color: #66615ced;
+                cursor: pointer;
+                font-size: 2rem;
+
+                li {
+                    margin: .5rem 0;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+
+                    div {
+                        width: 5px;
+                        height: 5px;
+                        background: transparent;
+                        border-radius: 50%;
+
+                        margin-left: -20px;
+                        margin-right: 10px;
+                    }
+
+                    &:hover {
+                        div {
+                            background-color: #66615ced;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            display: none;
+        }
+    }
+
 }

@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import classes from './Navbar.module.scss';
-import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { HiMenuAlt4, HiX } from 'react-icons/hi';
 
 const Navbar = () => {
-  const [active, setActive] = useState('')
+  const [active, setActive] = useState('');
+  const [toggle, setToggle] = useState(false);
 
   const navTabs = [
     'Home',
@@ -14,10 +16,11 @@ const Navbar = () => {
   ]
 
   const handleClick = (item: string) => {
-    console.log('item', item)
     setActive(item);
-    console.log('active', active)
+    setToggle(false);
   }
+
+  console.log('toggle', toggle);
 
   return (
     <nav className={classes.main}>
@@ -28,10 +31,10 @@ const Navbar = () => {
         {navTabs.map((item, index) => (
           <Link
             href='/'
+            key={`link-${item}`}
           >
             <li
               onClick={() => handleClick(item)}
-              key={`link-${item}`}
               className={active === item ? `${classes.activeLink}` : ''}
             >
               {item}
@@ -39,6 +42,41 @@ const Navbar = () => {
           </Link>
         ))}
       </ul>
+
+      <div className={classes.mobileMenuContainer}>
+        {toggle || <HiMenuAlt4 onClick={() => setToggle(true)} />}
+        {toggle && (
+          <motion.div
+            whileInView={{ x: [200,0] }}
+            transition={{ duration: 0.85, ease: 'easeOut' }}
+            exit={{ opacity:0}}
+            className={classes.mobileMenu}
+          >
+            <HiX 
+              onClick={() => setToggle(false)} 
+              className={classes.menuXIcon}
+            />
+            <ul className={classes.mobileLinks}>
+              {navTabs.map((item,index) => (
+                <Link 
+                  href="/"
+                  key={`link-${item}`}
+                >
+                  <li
+                  onClick={() => handleClick(item)}
+                  >
+                    <div/>
+                    <span>
+                      {item}
+                    </span>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+            
+          </motion.div>
+        )}
+      </div>
     </nav>
   )
 }
