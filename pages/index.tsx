@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import classes from '../styles/Home.module.css';
+import classes from '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +12,15 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={classes.main}>
-        Home Page
+        <section className={classes.headerSection}>
+          <div className={classes.headerTextContainer}>
+            <span className={classes.primaryText}>Calvin Luo</span>
+            <div className={classes.secondaryText}>
+              <span>SF Native Real Estate Expert</span>
+              <span>Compass | CA DRE #02070754</span>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   )
