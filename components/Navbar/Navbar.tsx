@@ -1,8 +1,13 @@
-import './Navbar.module.scss';
+import classes from './Navbar.module.scss';
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <nav className={classes.main}>
+      <div className={classes.logoText}>
+        <h3 >Calvin Luo</h3>
+      </div>
+    </nav>
   )
 }
 
