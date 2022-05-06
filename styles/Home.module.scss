@@ -51,25 +51,39 @@
 
     // about
     .aboutContainer {
-      padding: 2rem 5rem;
+      padding: 10rem;
       display: flex;
       justify-content: center;
+      width: 100vw;
+
+      background: url('/images/black-texture_1205-327.webp');
 
       .aboutCol {
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: #fff;
+
+        img {
+          clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+        }
 
         .aboutHeading {
           font-size: 3rem;
           text-transform: uppercase;
+          letter-spacing: 5px;
         }
 
         .aboutContent {
-          font-size: 1.5rem;
           display: flex;
           flex-direction: column;
           align-items: center;
+
+          font-size: 1.5rem;
+          line-height: 3rem;
+          letter-spacing: 2px;
+
+          margin-top: 2rem;
 
           .aboutBtn {
             width: 18rem;
@@ -80,15 +94,27 @@
 
             cursor: pointer;
 
-            background-color: #000;
+            background-color: rgb(77, 77, 77);
             color: #fff;
           }
+        }
+
+        @media screen and (max-width: 992px) {
+          padding: 3rem 0;
+        }
+      }
+
+      .aboutCol3 {
+        display: flex;
+        justify-content: flex-end;
+
+        @media screen and (max-width: 992px) {
+          padding: 3rem 0;
         }
       }
     }
 
     // properties
-
     .propertiesContainer {
 
       .propertiesBtn {

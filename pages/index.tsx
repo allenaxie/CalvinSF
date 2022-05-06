@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import Head from 'next/head';
 import classes from '../styles/Home.module.scss';
 import { Col, Row } from 'antd';
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
           <motion.div 
             className={classes.headerTextContainer}
             animate={{opacity:[0,1]}}
+            transition={{ duration:1.5}}
           >
             <span className={classes.primaryText}>Calvin Luo</span>
             <div className={classes.secondaryText}>
@@ -34,7 +36,7 @@ const Home: NextPage = () => {
             lg={{ span: 8 }}
             className={classes.aboutCol}
           >
-            image
+            <Image src="/images/FSTour.jpeg" width={305} height={458} />
           </Col>
           <Col
             className={`${classes.aboutTextContainer} ${classes.aboutCol}`}
@@ -56,9 +58,9 @@ const Home: NextPage = () => {
           <Col
             xs={{ span: 24 }}
             lg={{ span: 8 }}
-            className={classes.aboutCol}
+            className={`${classes.aboutCol} ${classes.aboutCol3}`}
           >
-            image
+            <Image src="/images/Selfie.jpeg" width={305} height={458} />
           </Col>
         </Row>
 
