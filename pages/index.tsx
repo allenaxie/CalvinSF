@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <section className={classes.headerSection}>
           <motion.div 
             className={classes.headerTextContainer}
-            animate={{opacity:[0,1]}}
+            whileInView={{opacity:[0,1]}}
             transition={{ duration:1.5}}
           >
             <span className={classes.primaryText}>Calvin Luo</span>
@@ -36,31 +36,47 @@ const Home: NextPage = () => {
             lg={{ span: 8 }}
             className={classes.aboutCol}
           >
-            <Image src="/images/FSTour.jpeg" width={305} height={458} />
+            <motion.div
+              whileInView={{ opacity: [0,1], x:[-300,0] }}
+              transition={{ duration: 1, delay:0.8 }}
+            >
+              <Image src="/images/FSTour.jpeg" width={305} height={458} />
+            </motion.div>
           </Col>
           <Col
             className={`${classes.aboutTextContainer} ${classes.aboutCol}`}
             xs={{ span: 24 }}
             lg={{ span: 8 }}
           >
-            <div className={classes.aboutHeading}>
+            <motion.div 
+              className={classes.aboutHeading}
+              whileInView={{opacity:[0,1]}}
+            >
               <span>About Me</span>
-            </div>
-            <div className={classes.aboutContent}>
+            </motion.div>
+            <motion.div 
+            className={classes.aboutContent}
+            whileInView={{opacity:[0,1]}}
+            >
               <span>
                 I have overseen numerous transactions as well as manage workflows around home buying and selling. Coupled with my knowledge of the city, and my experiences of having lived here all my life, I have the enthusiasm and desire to ensure your home buying/selling process flows as smoothly as possible.
                 <br/><br/>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </span>
               <button className={classes.aboutBtn}>Learn More</button>
-            </div>
+            </motion.div>
           </Col>
           <Col
             xs={{ span: 24 }}
             lg={{ span: 8 }}
             className={`${classes.aboutCol} ${classes.aboutCol3}`}
           >
+            <motion.div
+            whileInView={{ opacity: [0,1], x:[300,0] }}
+            transition={{ duration: 1, delay:0.8 }}
+            >
             <Image src="/images/Selfie.jpeg" width={305} height={458} />
+            </motion.div>
           </Col>
         </Row>
 
