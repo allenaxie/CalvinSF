@@ -116,6 +116,70 @@
 
     // properties
     .propertiesContainer {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10rem;
+
+      position: relative;
+      background-color: #000;
+
+      .propertiesGallery {
+        display: flex;
+
+        .propertiesImgGroup {
+          display: flex;
+          align-items: center;
+          position: relative;
+          left: -25%;
+
+          span {
+            width: 410px !important;
+            height: 308px !important;
+            margin-right: 2rem !important;
+          }
+        }
+
+
+        .propertiesArrow {
+          border-radius: 50%;
+          border: none;
+          width: 35px;
+          height: 35px;
+          z-index: 2;
+          cursor: pointer;
+
+          background-color: rgba(255, 255, 255, 0.69);
+          color: #000;
+
+          svg {
+            font-size: 1.3rem;
+            color: rgba(74, 74, 74, 0.7);
+          }
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.918);
+
+            svg {
+              color: rgba(33, 33, 33, 0.881);
+            }
+          }
+        }
+  
+        .propertiesArrow:first-child {
+          position: absolute;
+          top: 50%;
+          left: 5%;
+        }
+  
+        .propertiesArrow:last-child {
+          position: absolute;
+          top: 50%;
+          right: 5%;
+        }
+      }
 
       .propertiesBtn {
         width: 18rem;
@@ -124,10 +188,15 @@
         border: none;
         border-radius: 4px;
 
+        position: absolute;
+        bottom: 5%;
+        left: 45%;
+
         cursor: pointer;
 
         background-color: #fff;
         color: #000;
+
       }
     }
   }
