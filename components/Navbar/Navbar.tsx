@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import classes from './Navbar.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 
@@ -24,9 +25,13 @@ const Navbar = () => {
 
   return (
     <nav className={classes.main}>
-      <div className={classes.logoContainer}>
-        <h3 className={classes.logoText}>Calvin Luo</h3>
-      </div>
+      <motion.div 
+        className={classes.logoContainer}
+        whileInView={{opacity:[0,1]}}
+      >
+        {/* <h3 className={classes.logoText}>Calvin Luo</h3> */}
+        <Image src="/images/compass-logo.png" width={200} height={80}/>
+      </motion.div>
       <ul className={classes.navbarLinks}>
         {navTabs.map((item, index) => (
           <Link

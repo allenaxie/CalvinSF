@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import classes from '../styles/Home.module.scss';
 import { Col, Row } from 'antd';
+import {motion} from 'framer-motion';
 
 const Home: NextPage = () => {
   return (
@@ -15,13 +16,16 @@ const Home: NextPage = () => {
       <main className={classes.main}>
 
         <section className={classes.headerSection}>
-          <div className={classes.headerTextContainer}>
+          <motion.div 
+            className={classes.headerTextContainer}
+            animate={{opacity:[0,1]}}
+          >
             <span className={classes.primaryText}>Calvin Luo</span>
             <div className={classes.secondaryText}>
               <span>SF Native Real Estate Expert</span>
               <span>Compass | CA DRE #02070754</span>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <Row className={classes.aboutContainer}>
