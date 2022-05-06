@@ -94,7 +94,11 @@ const Home: NextPage = () => {
             </div>
             <button className={classes.propertiesArrow}><FaArrowRight/></button>
           </div>
-          <button className={classes.propertiesBtn}>Sold Properties</button>
+          <button className={classes.propertiesBtn}>
+            <span>
+              Sold Properties
+            </span>
+          </button>
         </Row>
       </main>
     </div>
