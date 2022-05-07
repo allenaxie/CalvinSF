@@ -4,9 +4,13 @@ import Head from 'next/head';
 import classes from '../styles/Home.module.scss';
 import { Col, Row } from 'antd';
 import {motion} from 'framer-motion';
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import { urlFor, client } from '../sanity';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({properties}:any) => {
+
+  console.log('properties',properties);
+
   return (
     <div className={classes.container}>
       <Head>
@@ -85,12 +89,13 @@ const Home: NextPage = () => {
           <div className={classes.propertiesGallery}>
             <button className={classes.propertiesArrow}><FaArrowLeft/></button>
             <div className={classes.propertiesImgGroup}>
-              <Image src="/images/properties/9 Somerset Place.jpeg" height={308} width={410}/>
-              <Image src="/images/properties/9 Somerset Place.jpeg" height={308} width={410}/>
-              <Image src="/images/properties/303 Philip Drive-304 (Temp).jpeg" height={308} width={410}/>
-              <Image src="/images/properties/454 Frederick Street.jpeg" height={308} width={410}/>
-              <Image src="/images/properties/454 Frederick Street.jpeg" height={308} width={410}/>
-              <Image src="/images/properties/454 Frederick Street.jpeg" height={308} width={410}/>
+              {properties.map(( item:any, index:number ) => (
+                <div className={classes.propertyItem}>
+                  <Image src={`${urlFor(item.imgUrl)}`} height={308} width={410} alt={item.address}/>
+                  <span>{item.address}</span>
+                </div>
+
+              ))}
             </div>
             <button className={classes.propertiesArrow}><FaArrowRight/></button>
           </div>
@@ -106,3 +111,23 @@ const Home: NextPage = () => {
 }
 
 export default Home;
+
+export async function getStaticProps () {
+  const query = '*[_type == "properties"]';
+
+  const properties = await client.fetch(query);
+
+  if (!properties.length) {
+    return {
+      props: {
+        properties: []
+      }
+    }
+  }else {
+    return {
+      props: {
+        properties
+      }
+    }
+  }
+}

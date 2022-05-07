@@ -135,7 +135,15 @@
           position: relative;
           left: -25%;
 
-          span {
+          .propertyItem {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            font-size: 2.1rem;
+            color: #fff;
+            letter-spacing: 3px;
+
             width: 410px !important;
             height: 308px !important;
             margin-right: 2rem !important;
