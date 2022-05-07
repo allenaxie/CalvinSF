@@ -9,8 +9,6 @@ import { urlFor, client } from '../sanity';
 
 const Home: NextPage = ({properties}:any) => {
 
-  console.log('properties',properties);
-
   return (
     <div className={classes.container}>
       <Head>
@@ -113,7 +111,7 @@ const Home: NextPage = ({properties}:any) => {
 export default Home;
 
 export async function getStaticProps () {
-  const query = '*[_type == "properties"]';
+  const query = '*[_type == "properties"] | order(order asc)';
 
   const properties = await client.fetch(query);
 
