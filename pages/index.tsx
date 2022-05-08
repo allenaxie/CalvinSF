@@ -1,13 +1,39 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 import classes from '../styles/Home.module.scss';
 import { Col, Row } from 'antd';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { urlFor, client } from '../sanity';
 
-const Home: NextPage = ({properties}:any) => {
+const Home: NextPage = ({ properties }: any) => {
+
+  const [propertyIndex, setPropertyIndex] = useState(3);
+  const [galleryXPosition, setGalleryXPosition] = useState(0);
+
+  useEffect(() => {
+    console.log('propertyIndex', propertyIndex);
+    console.log('galleryXPosition', galleryXPosition);
+    
+  },[galleryXPosition])
+
+  const handleArrowClick = (direction: string) => {
+    if (direction === "left" && propertyIndex > 1) {
+      setGalleryXPosition(galleryXPosition + 410);
+      const gallery = document.querySelector(".Home_propertiesImgGroup__qeXOl") as HTMLElement;
+      gallery!.style.transform = `translateX(${galleryXPosition}px)`;
+      setPropertyIndex(propertyIndex - 1);
+      
+    } else if (direction === "right" && propertyIndex < properties.length - 2) {
+      setGalleryXPosition(galleryXPosition - 410);
+      const gallery = document.querySelector(".Home_propertiesImgGroup__qeXOl") as HTMLElement;
+      gallery!.style.transform = `translateX(${galleryXPosition}px)`;
+      setPropertyIndex(propertyIndex + 1);
+
+    }
+  }
 
   return (
     <div className={classes.container}>
@@ -20,10 +46,10 @@ const Home: NextPage = ({properties}:any) => {
       <main className={classes.main}>
 
         <section className={classes.headerSection}>
-          <motion.div 
+          <motion.div
             className={classes.headerTextContainer}
-            whileInView={{opacity:[0,1]}}
-            transition={{ duration:1.5}}
+            whileInView={{ opacity: [0, 1] }}
+            transition={{ duration: 1.5 }}
           >
             <span className={classes.primaryText}>Calvin Luo</span>
             <div className={classes.secondaryText}>
@@ -40,8 +66,8 @@ const Home: NextPage = ({properties}:any) => {
             className={classes.aboutCol}
           >
             <motion.div
-              whileInView={{ opacity: [0,1], x:[-400,0] }}
-              transition={{ duration: 1, delay:0.5 }}
+              whileInView={{ opacity: [0, 1], x: [-400, 0] }}
+              transition={{ duration: 1, delay: 0.5 }}
             >
               <Image src="/images/FSTour.jpeg" width={305} height={458} />
             </motion.div>
@@ -51,19 +77,19 @@ const Home: NextPage = ({properties}:any) => {
             xs={{ span: 24 }}
             lg={{ span: 8 }}
           >
-            <motion.div 
+            <motion.div
               className={classes.aboutHeading}
-              whileInView={{opacity:[0,1]}}
+              whileInView={{ opacity: [0, 1] }}
             >
               <span>About Me</span>
             </motion.div>
-            <motion.div 
-            className={classes.aboutContent}
-            whileInView={{opacity:[0,1]}}
+            <motion.div
+              className={classes.aboutContent}
+              whileInView={{ opacity: [0, 1] }}
             >
               <span>
                 I have overseen numerous transactions as well as manage workflows around home buying and selling. Coupled with my knowledge of the city, and my experiences of having lived here all my life, I have the enthusiasm and desire to ensure your home buying/selling process flows as smoothly as possible.
-                <br/><br/>
+                <br /><br />
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </span>
               <button className={classes.aboutBtn}>Learn More</button>
@@ -75,27 +101,27 @@ const Home: NextPage = ({properties}:any) => {
             className={`${classes.aboutCol} ${classes.aboutCol3}`}
           >
             <motion.div
-            whileInView={{ opacity: [0,1], x:[400,0] }}
-            transition={{ duration: 1, delay:0.5 }}
+              whileInView={{ opacity: [0, 1], x: [400, 0] }}
+              transition={{ duration: 1, delay: 0.5 }}
             >
-            <Image src="/images/Selfie.jpeg" width={305} height={458} />
+              <Image src="/images/Selfie.jpeg" width={305} height={458} />
             </motion.div>
           </Col>
         </Row>
 
         <Row className={classes.propertiesContainer}>
           <div className={classes.propertiesGallery}>
-            <button className={classes.propertiesArrow}><FaArrowLeft/></button>
+            <button className={classes.propertiesArrow} onClick={() => handleArrowClick('left')}><FaArrowLeft /></button>
             <div className={classes.propertiesImgGroup}>
-              {properties.map(( item:any, index:number ) => (
-                <div className={classes.propertyItem}>
-                  <Image src={`${urlFor(item.imgUrl)}`} height={308} width={410} alt={item.address}/>
+              {properties.map((item: any, index: number) => (
+                <div className={classes.propertyItem} key={item.address}>
+                  <Image src={`${urlFor(item.imgUrl)}`} height={308} width={410} alt={item.address} />
                   <span>{item.address}</span>
                 </div>
 
               ))}
             </div>
-            <button className={classes.propertiesArrow}><FaArrowRight/></button>
+            <button className={classes.propertiesArrow} onClick={() => handleArrowClick('right')}><FaArrowRight /></button>
           </div>
           <button className={classes.propertiesBtn}>
             <span>
@@ -110,7 +136,7 @@ const Home: NextPage = ({properties}:any) => {
 
 export default Home;
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   const query = '*[_type == "properties"] | order(order asc)';
 
   const properties = await client.fetch(query);
@@ -121,7 +147,7 @@ export async function getStaticProps () {
         properties: []
       }
     }
-  }else {
+  } else {
     return {
       props: {
         properties
