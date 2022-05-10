@@ -25,3 +25,30 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.alice-carousel__prev-btn,.alice-carousel__next-btn {
+  font-size: 4rem;
+
+  p {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.798);
+    padding: 0;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.965);
+
+    }
+  }
+
+  span {
+    color: #000;
+    padding: 1rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

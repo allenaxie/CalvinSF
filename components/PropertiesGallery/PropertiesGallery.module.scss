@@ -1,0 +1,14 @@
+.propertyItem {
+    margin: 0 1rem;
+    text-align: center;
+
+    span:first-child {
+        margin-bottom: 1rem !important;
+    }
+
+    span:last-child {
+        color: #fff;
+        z-index: 10;
+        font-size: 2rem;
+    }
+}

@@ -7,7 +7,7 @@ import { Col, Row } from 'antd';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { urlFor, client } from '../sanity';
-import { Footer } from '../components';
+import { Footer, PropertiesGallery } from '../components';
 
 const Home: NextPage = ({ properties }: any) => {
 
@@ -108,22 +108,7 @@ const Home: NextPage = ({ properties }: any) => {
         </Row>
 
         <Row className={classes.propertiesContainer}>
-          <div className={classes.propertiesGallery}>
-            <button className={classes.propertiesArrow} onClick={() => handleArrowClick('left')}><FaArrowLeft /></button>
-            <div className={classes.propertiesImgGroup} >
-              {properties.map((item: any, index: number) => (
-                <div className={classes.propertyItem} 
-                key={item.address}
-                // key={`${propertyIndex}-${item.address}`}
-                >
-                  <Image src={`${urlFor(item.imgUrl)}`} height={308} width={410} alt={item.address} />
-                  <span>{item.address}</span>
-                </div>
-
-              ))}
-            </div>
-            <button className={classes.propertiesArrow} onClick={() => handleArrowClick('right')}><FaArrowRight /></button>
-          </div>
+          <PropertiesGallery properties={properties}/>
           <button className={classes.propertiesBtn}>
             <span>
               Sold Properties
