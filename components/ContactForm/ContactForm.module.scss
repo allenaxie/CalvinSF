@@ -6,4 +6,8 @@
     font-size: 2rem;
     padding: 1rem;
     cursor: pointer;
+
+    &:hover {
+        background: linear-gradient(to right, rgba(42, 42, 42, 0.713) 0%, rgba(18, 18, 18, 0.913) 100%);
+    }
 }

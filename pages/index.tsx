@@ -139,7 +139,7 @@ const Home: NextPage = ({ properties }: any) => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const query = '*[_type == "properties"] | order(order asc)';
 
   const properties = await client.fetch(query);
