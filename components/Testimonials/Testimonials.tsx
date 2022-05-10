@@ -17,7 +17,7 @@ const Testimonials = ({ testimonials }: any) => {
                         whileInView={{ opacity: [0, 1] }}
                         transition={{ duration: 1.3 }}
                     >
-                        <p>"{item.feedback}"</p>
+                        <p>&quot;{item.feedback}&quot;</p>
                         <span>{item.name}</span>
                     </motion.div>
                 </Col>

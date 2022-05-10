@@ -12,7 +12,7 @@ const Footer = () => {
                 lg={{ span: 16 }}
                 className={classes.footerMainContent}
             >
-                <Image src="/images/Compass_Logo_H_K.svg" width={150} height={50}/>
+                <Image src="/images/Compass_Logo_H_K.svg" width={150} height={50} alt="compass-logo"/>
                 <div className={classes.footerAddress}>
                     <span>Address</span>
                     <span>Calvin Luo</span>
@@ -30,7 +30,6 @@ const Footer = () => {
                 xs={{ span: 18 }}
                 lg={{ span: 8 }}
                 className={classes.contactFormContainer}
-                justify="center"
             >
                 <ContactForm/>
             </Col>

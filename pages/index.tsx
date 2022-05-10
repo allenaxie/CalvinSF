@@ -47,7 +47,7 @@ const Home: NextPage = ({ properties, testimonials }: any) => {
               whileInView={{ opacity: [0, 1], x: [-300, 0] }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <Image src="/images/FSTour.jpeg" width={305} height={458} />
+              <Image src="/images/FSTour.jpeg" width={305} height={458} alt="about-me-image1"/>
             </motion.div>
           </Col>
           <Col
@@ -82,7 +82,7 @@ const Home: NextPage = ({ properties, testimonials }: any) => {
               whileInView={{ opacity: [0, 1], x: [300, 0] }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <Image src="/images/Selfie.jpeg" width={305} height={458} />
+              <Image src="/images/Selfie.jpeg" width={305} height={458} alt="about-me-image2"/>
             </motion.div>
           </Col>
         </Row>
