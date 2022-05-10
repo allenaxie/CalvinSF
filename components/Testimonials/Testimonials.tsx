@@ -8,7 +8,8 @@ const Testimonials = ({ testimonials }: any) => {
         <Row className={classes.container}>
             {testimonials.map((item: any, index: number) => (
                 <Col
-                    xs={{ span: 12 }}
+                    xs={{ span: 24 }}
+                    md={{ span: 12 }}
                     key={item.name}
                     className={classes.testimonialItem}
                 >

@@ -44,7 +44,7 @@ const Home: NextPage = ({ properties, testimonials }: any) => {
             className={classes.aboutCol}
           >
             <motion.div
-              whileInView={{ opacity: [0, 1], x: [-400, 0] }}
+              whileInView={{ opacity: [0, 1], x: [-300, 0] }}
               transition={{ duration: 1, delay: 0.5 }}
             >
               <Image src="/images/FSTour.jpeg" width={305} height={458} />
@@ -79,7 +79,7 @@ const Home: NextPage = ({ properties, testimonials }: any) => {
             className={`${classes.aboutCol} ${classes.aboutCol3}`}
           >
             <motion.div
-              whileInView={{ opacity: [0, 1], x: [400, 0] }}
+              whileInView={{ opacity: [0, 1], x: [300, 0] }}
               transition={{ duration: 1, delay: 0.5 }}
             >
               <Image src="/images/Selfie.jpeg" width={305} height={458} />
