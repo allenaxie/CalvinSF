@@ -1,4 +1,4 @@
-import './ContactForm.module.scss';
+import classes from './ContactForm.module.scss';
 import { BsMailbox } from 'react-icons/bs';
 import { useForm } from '@formspree/react';
 import { Form, Input, Result } from 'antd';
@@ -28,12 +28,9 @@ const ContactForm = () => {
       <Form
         name='contact-form'
         onFinish={handleSubmit}
-        className="app__footer-form"
+        className={classes.form}
         wrapperCol={{
           xs: { span: 18, offset: 5 },
-        //   md: {span: 20, offset: 2 },
-        //   lg: { span: 18, offset: 3},
-        //   xl: {span: 14, offset: 6},
         }}
         validateMessages={validateMessages}
       >
@@ -63,7 +60,7 @@ const ContactForm = () => {
             md: { span: 24, offset: 11 }
           }}
         >
-          <button type="submit" className='p-text'>
+          <button type="submit" className={classes.submitBtn}>
             Get In Touch
           </button>
         </Form.Item>
