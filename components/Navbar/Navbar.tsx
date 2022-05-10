@@ -21,8 +21,6 @@ const Navbar = () => {
     setToggle(false);
   }
 
-  console.log('toggle', toggle);
-
   return (
     <nav className={classes.main}>
       <motion.div 

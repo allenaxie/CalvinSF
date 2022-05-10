@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formspree/react": "^2.2.5",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "antd": "^4.20.2",

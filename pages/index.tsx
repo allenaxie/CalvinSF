@@ -7,31 +7,29 @@ import { Col, Row } from 'antd';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { urlFor, client } from '../sanity';
+import { Footer } from '../components';
 
 const Home: NextPage = ({ properties }: any) => {
 
   const [propertyIndex, setPropertyIndex] = useState(3);
   const [galleryXPosition, setGalleryXPosition] = useState(0);
 
-  useEffect(() => {
-    console.log('propertyIndex', propertyIndex);
-    console.log('galleryXPosition', galleryXPosition);
-    
-  },[galleryXPosition])
+  console.log('propertyIndex', propertyIndex);
+  console.log('galleryXPosition', galleryXPosition);
+
 
   const handleArrowClick = (direction: string) => {
     if (direction === "left" && propertyIndex > 1) {
       setGalleryXPosition(galleryXPosition + 410);
+      // changes in DOM are one step behind. Need to find a way to re-render DOM of image gallery
       const gallery = document.querySelector(".Home_propertiesImgGroup__qeXOl") as HTMLElement;
       gallery!.style.transform = `translateX(${galleryXPosition}px)`;
       setPropertyIndex(propertyIndex - 1);
-      
     } else if (direction === "right" && propertyIndex < properties.length - 2) {
       setGalleryXPosition(galleryXPosition - 410);
       const gallery = document.querySelector(".Home_propertiesImgGroup__qeXOl") as HTMLElement;
       gallery!.style.transform = `translateX(${galleryXPosition}px)`;
       setPropertyIndex(propertyIndex + 1);
-
     }
   }
 
@@ -112,9 +110,12 @@ const Home: NextPage = ({ properties }: any) => {
         <Row className={classes.propertiesContainer}>
           <div className={classes.propertiesGallery}>
             <button className={classes.propertiesArrow} onClick={() => handleArrowClick('left')}><FaArrowLeft /></button>
-            <div className={classes.propertiesImgGroup}>
+            <div className={classes.propertiesImgGroup} >
               {properties.map((item: any, index: number) => (
-                <div className={classes.propertyItem} key={item.address}>
+                <div className={classes.propertyItem} 
+                key={item.address}
+                // key={`${propertyIndex}-${item.address}`}
+                >
                   <Image src={`${urlFor(item.imgUrl)}`} height={308} width={410} alt={item.address} />
                   <span>{item.address}</span>
                 </div>
@@ -129,6 +130,8 @@ const Home: NextPage = ({ properties }: any) => {
             </span>
           </button>
         </Row>
+
+        <Footer/>
       </main>
     </div>
   )
