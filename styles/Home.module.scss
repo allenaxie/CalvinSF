@@ -94,8 +94,14 @@
 
             cursor: pointer;
 
-            background-color: rgb(77, 77, 77);
+            background-color: rgb(54, 54, 54);
+
             color: #fff;
+
+            &:hover {
+              background-color: rgb(77, 77, 77);
+
+            }
           }
         }
 
@@ -152,6 +158,13 @@
           }
         }
       }
+    }
+
+    // testimonials
+    .testimonialsContainer {
+      background: linear-gradient(rgba(63, 63, 63, 0.58), rgba(102, 102, 102, 0.565)), url('/images/marble-background.jpeg');
+      background-size: cover;
+      width: 100vw;
     }
   }
 }

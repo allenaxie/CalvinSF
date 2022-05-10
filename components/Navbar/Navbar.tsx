@@ -29,7 +29,7 @@ const Navbar = () => {
         transition={{ duration: 1, ease:'easeInOut'}}
       >
         {/* <h3 className={classes.logoText}>Calvin Luo</h3> */}
-        <Image src="/images/compass-logo.png" width={200} height={80} alt="compass-logo"/>
+        <Image src="/images/Compass_Logo_H_W.svg" width={200} height={80} alt="compass-logo"/>
       </motion.div>
       <ul className={classes.navbarLinks}>
         {navTabs.map((item, index) => (

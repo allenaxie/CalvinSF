@@ -7,31 +7,11 @@ import { Col, Row } from 'antd';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { urlFor, client } from '../sanity';
-import { Footer, PropertiesGallery } from '../components';
+import { Footer, PropertiesGallery, Testimonials } from '../components';
 
-const Home: NextPage = ({ properties }: any) => {
+const Home: NextPage = ({ properties, testimonials }: any) => {
 
-  const [propertyIndex, setPropertyIndex] = useState(3);
-  const [galleryXPosition, setGalleryXPosition] = useState(0);
-
-  console.log('propertyIndex', propertyIndex);
-  console.log('galleryXPosition', galleryXPosition);
-
-
-  const handleArrowClick = (direction: string) => {
-    if (direction === "left" && propertyIndex > 1) {
-      setGalleryXPosition(galleryXPosition + 410);
-      // changes in DOM are one step behind. Need to find a way to re-render DOM of image gallery
-      const gallery = document.querySelector(".Home_propertiesImgGroup__qeXOl") as HTMLElement;
-      gallery!.style.transform = `translateX(${galleryXPosition}px)`;
-      setPropertyIndex(propertyIndex - 1);
-    } else if (direction === "right" && propertyIndex < properties.length - 2) {
-      setGalleryXPosition(galleryXPosition - 410);
-      const gallery = document.querySelector(".Home_propertiesImgGroup__qeXOl") as HTMLElement;
-      gallery!.style.transform = `translateX(${galleryXPosition}px)`;
-      setPropertyIndex(propertyIndex + 1);
-    }
-  }
+  // console.log(testimonials);
 
   return (
     <div className={classes.container}>
@@ -110,10 +90,10 @@ const Home: NextPage = ({ properties }: any) => {
         <Row className={classes.propertiesContainer}>
           <motion.div
             className={classes.propertiesMotionDiv}
-            whileInView={{ opacity: [0, 1], y: [200, 0] }}
-            transition={{ duration: 1, delay: 0.5 }}
+            whileInView={{ opacity: [0, 1] }}
+            transition={{ duration: 1.5 }}
           >
-            <PropertiesGallery properties={properties}/>
+            <PropertiesGallery properties={properties} />
             <button className={classes.propertiesBtn}>
               <span>
                 Sold Properties
@@ -122,7 +102,12 @@ const Home: NextPage = ({ properties }: any) => {
           </motion.div>
         </Row>
 
-        <Footer/>
+        <Row
+          className={classes.testimonialsContainer}
+        >
+            <Testimonials testimonials={testimonials} />
+        </Row>
+        <Footer />
       </main>
     </div>
   )
@@ -131,20 +116,24 @@ const Home: NextPage = ({ properties }: any) => {
 export default Home;
 
 export async function getServerSideProps() {
-  const query = '*[_type == "properties"] | order(order asc)';
+  const propertiesQuery = '*[_type == "properties"] | order(order asc)';
+  const testimonialsQuery = '*[_type == "testimonials"] | order(order asc)';
 
-  const properties = await client.fetch(query);
+  const properties = await client.fetch(propertiesQuery);
+  const testimonials = await client.fetch(testimonialsQuery);
 
   if (!properties.length) {
     return {
       props: {
-        properties: []
+        properties: [],
+        testimonials: [],
       }
     }
   } else {
     return {
       props: {
-        properties
+        properties,
+        testimonials
       }
     }
   }
