@@ -1,11 +1,17 @@
+@font-face {
+  font-family: 'CompassSerif-Regular';
+  src: local('CompassSerif-Regular'),
+       url('../fonts/CompassSerif-Regular.ttf'),
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 
-  'CompassSerif',
+  'CompassSerif-Regular',
   // 'Abel', 
-  // sans-serif
+  sans-serif
   ;
   font-size: 62.5%;
   overflow-x: hidden;
