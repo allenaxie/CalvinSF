@@ -59,6 +59,7 @@ const ContactForm = () => {
             xs: { span: 24, offset: 10 },
             md: { span: 24, offset: 11 }
           }}
+          className={classes.btnContainer}
         >
           <button type="submit" className={classes.submitBtn}>
             Get In Touch
