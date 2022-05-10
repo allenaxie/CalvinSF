@@ -108,12 +108,18 @@ const Home: NextPage = ({ properties }: any) => {
         </Row>
 
         <Row className={classes.propertiesContainer}>
-          <PropertiesGallery properties={properties}/>
-          <button className={classes.propertiesBtn}>
-            <span>
-              Sold Properties
-            </span>
-          </button>
+          <motion.div
+            className={classes.propertiesMotionDiv}
+            whileInView={{ opacity: [0, 1], y: [200, 0] }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <PropertiesGallery properties={properties}/>
+            <button className={classes.propertiesBtn}>
+              <span>
+                Sold Properties
+              </span>
+            </button>
+          </motion.div>
         </Row>
 
         <Footer/>

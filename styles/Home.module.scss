@@ -116,18 +116,21 @@
 
     // properties
     .propertiesContainer {
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10rem;
-
-      position: relative;
       background-color: #000;
 
-      @media screen and (max-width:425px) {
-        padding: 2rem;
+      .propertiesMotionDiv {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10rem;
+  
+        position: relative;
+  
+        @media screen and (max-width:425px) {
+          padding: 2rem;
+        }
       }
       
       .propertiesBtn {
