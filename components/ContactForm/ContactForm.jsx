@@ -30,10 +30,10 @@ const ContactForm = () => {
         onFinish={handleSubmit}
         className="app__footer-form"
         wrapperCol={{
-          xs: { span: 24 },
-          md: {span: 20, offset: 2 },
-          lg: { span: 18, offset: 3},
-          xl: {span: 14, offset: 6},
+          xs: { span: 18, offset: 5 },
+        //   md: {span: 20, offset: 2 },
+        //   lg: { span: 18, offset: 3},
+        //   xl: {span: 14, offset: 6},
         }}
         validateMessages={validateMessages}
       >
@@ -64,7 +64,7 @@ const ContactForm = () => {
           }}
         >
           <button type="submit" className='p-text'>
-            Send Message
+            Get In Touch
           </button>
         </Form.Item>
       </Form>
